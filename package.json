@@ -1,0 +1,23 @@
+{
+  "name": "alexbannon_test",
+  "version": "1.0.0",
+  "description": "morning_consult_test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexbannon/morning_consult_test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexbannon/morning_consult_test/issues"
+  },
+  "homepage": "https://github.com/alexbannon/morning_consult_test#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3"
+  }
+}
