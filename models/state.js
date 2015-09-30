@@ -1,6 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
   var model = sequelize.define("state", {
-    senators: DataTypes.ARRAY(DataTypes.STRING),
+    name: DataTypes.STRING,
+    senator_one: DataTypes.STRING,
+    senator_two: DataTypes.STRING,
     governor: DataTypes.STRING
   })
   return model;

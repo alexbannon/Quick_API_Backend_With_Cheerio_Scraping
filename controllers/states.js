@@ -13,10 +13,28 @@ router.get("/states", function(req, res) {
   });
 });
 
-router.get("/states/:id", function(req, res) {
-  State.findById(req.params.id).then(function(state){
-    res.json(state);
-  });
+router.get("/states/:stateName", function(req, res) {
+  var input = req.params.stateName
+  if(input.length == 2){
+    res.json({"2 letter search": "true"})
+  }
+  else{
+    State.findOne({ where:
+      {
+        name: {
+          $iLike: input
+        }
+      }
+    }).then(function(state){
+      var obj = {
+        "State": state.name,
+        "Senators": state.senator_one + ", " + state.senator_two,
+        "Governor": state.governor
+      }
+      res.json(obj);
+    });
+  }
+
 });
 
 router.post("/states", function(req,res) {
@@ -25,37 +43,39 @@ router.post("/states", function(req,res) {
   });
 });
 
-router.put("/states/:id", function(req,res){
-  State.findById(req.params.id).then(function(state){
-    if(!state){
-      return error(res, "state not found");
-    }
-    state.update(req.body).then(function(updatedState){
-      res.json(updatedState);
-    });
-  });
-});
+// Below in case update and delete functionality is needed
 
-router.patch("/states/:id", function(req,res){
-  State.findById(req.params.id).then(function(state){
-    if(!state){
-      return error(res, "state not found");
-    }
-    state.updateAttributes(req.body).then(function(updatedState){
-      res.json(updatedState);
-    });
-  });
-})
-
-router.delete("/states/:id", function(req,res){
-  State.findById(req.params.id).then(function(state){
-    if(!state){
-      return error(res, "state not found");
-    }
-    state.destroy().then(function(){
-      res.json({success: true});
-    });
-  });
-});
+// router.put("/states/:id", function(req,res){
+//   State.findById(req.params.id).then(function(state){
+//     if(!state){
+//       return error(res, "state not found");
+//     }
+//     state.update(req.body).then(function(updatedState){
+//       res.json(updatedState);
+//     });
+//   });
+// });
+//
+// router.patch("/states/:id", function(req,res){
+//   State.findById(req.params.id).then(function(state){
+//     if(!state){
+//       return error(res, "state not found");
+//     }
+//     state.updateAttributes(req.body).then(function(updatedState){
+//       res.json(updatedState);
+//     });
+//   });
+// })
+//
+// router.delete("/states/:id", function(req,res){
+//   State.findById(req.params.id).then(function(state){
+//     if(!state){
+//       return error(res, "state not found");
+//     }
+//     state.destroy().then(function(){
+//       res.json({success: true});
+//     });
+//   });
+// });
 
 module.exports = router;
