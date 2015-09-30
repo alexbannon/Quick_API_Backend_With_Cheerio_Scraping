@@ -1,0 +1,20 @@
+{
+  "name": "alexbannon_test",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/alexbannon/morning_consult_test",
+  "authors": [
+    "Alex Bannon <alexbannon@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}

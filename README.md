@@ -1,3 +1,14 @@
+Download and install node and node package manager
+
+Download and install postgreSQL
+
+npm install
+
+createdb morning_consult_test
+
+<!-- node db/connection.js
+node db/schema.js -->
+
 Task: Create a REST API Server
 
 The goal of this challange is to implement a fully functional HTTP API server using node.js. REST servers
