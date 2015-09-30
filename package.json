@@ -18,6 +18,9 @@
   "homepage": "https://github.com/alexbannon/morning_consult_test#readme",
   "dependencies": {
     "body-parser": "^1.14.1",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "pg": "^4.4.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.10.0"
   }
 }
