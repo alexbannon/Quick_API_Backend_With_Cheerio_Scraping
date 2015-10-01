@@ -16,7 +16,22 @@ router.get("/states", function(req, res) {
 router.get("/states/:stateName", function(req, res) {
   var input = req.params.stateName
   if(input.length == 2){
-    res.json({"2 letter search": "true"})
+    State.findOne({ where:
+      {
+        abbr: {
+          $iLike: input
+        }
+      }
+    }).then(function(state){
+      var obj = {
+        "State": state.name,
+        "Senators": state.senator_one + ", " + state.senator_two,
+        "Governor": state.governor
+      }
+      res.json(obj);
+    }).catch(function(err) {
+      res.json(err)
+    })
   }
   else{
     State.findOne({ where:
@@ -32,6 +47,8 @@ router.get("/states/:stateName", function(req, res) {
         "Governor": state.governor
       }
       res.json(obj);
+    }).catch(function(err) {
+      res.json(err)
     });
   }
 
