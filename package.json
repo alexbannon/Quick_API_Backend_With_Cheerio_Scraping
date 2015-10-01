@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/alexbannon/morning_consult_test#readme",
   "dependencies": {
-    "body-parser": "^1.14.1",
     "cheerio": "^0.19.0",
     "express": "^4.13.3",
     "fs": "0.0.2",

@@ -1,4 +1,3 @@
-var bodyParser = require("body-parser"); //for form submissions
 var path = require("path");
 var http = require('http');
 var https = require('https');
@@ -9,9 +8,8 @@ var credentials = {key: privateKey, cert: certificate};
 var express = require("express");
 var app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/public", express.static(path.join(__dirname + "/public")));
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 app.set("view engine", "hbs");
 
 var statesController = require("./controllers/states");
