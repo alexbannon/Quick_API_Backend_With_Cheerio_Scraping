@@ -4,6 +4,10 @@ Download and install node and node package manager
 
 Download and install postgreSQL
 
+Open PostgreSQL locally
+
+Then run the following commands in your terminal:
+
 ```
 npm install
 
@@ -15,6 +19,12 @@ node scrape.js
 
 node index.js
 ```
+
+Navigate to https://localhost:3000
+
+API located at: https://locahost:3000/myApi?state=Illinois
+
+If your browser yells at you about security, see Notes below (but http server lives at localhost:8080)
 
 #Notes
 
