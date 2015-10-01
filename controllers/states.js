@@ -13,6 +13,49 @@ router.get("/states", function(req, res) {
   });
 });
 
+//The requested myApi route structure with query strings
+
+router.get("/myApi", function(req, res){
+  var input = req.query["state"];
+  if(input.length == 2){
+    State.findOne({ where:
+      {
+        abbr: {
+          $iLike: input
+        }
+      }
+    }).then(function(state){
+      var obj = {
+        "State": state.name,
+        "Senators": state.senator_one + ", " + state.senator_two,
+        "Governor": state.governor
+      }
+      res.json(obj);
+    }).catch(function(err) {
+      res.json(err)
+    })
+  }
+  else{
+    State.findOne({ where:
+      {
+        name: {
+          $iLike: input
+        }
+      }
+    }).then(function(state){
+      var obj = {
+        "State": state.name,
+        "Senators": state.senator_one + ", " + state.senator_two,
+        "Governor": state.governor
+      }
+      res.json(obj);
+    }).catch(function(err) {
+      res.json(err)
+    });
+  }
+})
+
+//Another way to go about it with params
 router.get("/states/:stateName", function(req, res) {
   var input = req.params.stateName
   if(input.length == 2){
@@ -54,13 +97,15 @@ router.get("/states/:stateName", function(req, res) {
 
 });
 
-router.post("/states", function(req,res) {
-  State.create(req.body).then(function(state){
-    res.json(state);
-  });
-});
 
-// Below in case update and delete functionality is needed
+// Below in case post, update and delete functionality is needed
+
+// router.post("/states", function(req,res) {
+//   State.create(req.body).then(function(state){
+//     res.json(state);
+//   });
+// });
+
 
 // router.put("/states/:id", function(req,res){
 //   State.findById(req.params.id).then(function(state){

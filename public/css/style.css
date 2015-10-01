@@ -6,10 +6,15 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  text-align: center;
 }
 
 div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
+}
+
+h3 {
+  text-decoration: underline;
 }
